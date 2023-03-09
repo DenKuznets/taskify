@@ -3,7 +3,7 @@ import "./styles.css";
 
 // указываем типы свойств которые мы получаем из App.tsx , что бы тайпскрипт не ругался
 interface Props {
-  todo: string;
+  todoText: string;
   // тип setTodo мы посмотрели наведя мышку на useState, там всплывает тип функции которую возвращает useState hook
   setTodo: React.Dispatch<React.SetStateAction<string>>;
   // тип события React.FormEvent которое происходит при отправрке формы (и которое нам нужно предотвратить с помощью e.preventDefault() ). Его мы загуглили по фразе "event type in react typescript". В обучалке сказано, что стоит так гуглить все типы которые мы не можем догадаться
@@ -11,7 +11,7 @@ interface Props {
 }
 
 // в обучалке чувак всегда пишет функции через const Blabla = () => вместо function Blabla. Может ему так просто нравится
-function InputField({ todo, setTodo, handleAdd }: Props) {
+function InputField({ todoText, setTodo, handleAdd }: Props) {
   // тип <HTMLInputElement> мы подсмотрели наведя мышь на <input>. Таким же образом можно смотреть типы всех реакт элементов  
   const inputRef = useRef<HTMLInputElement>(null);
   // console.log(inputRef);
@@ -29,7 +29,7 @@ function InputField({ todo, setTodo, handleAdd }: Props) {
         // передаем переменную в свойство ref , и в момент ввода текста ей будет присвоена ссылка на инпут элемент
         ref={inputRef}
         type="input"
-        value={todo}
+        value={todoText}
         onChange={(e) => setTodo(e.target.value)}
         placeholder="Enter a task"
         className="input__box"

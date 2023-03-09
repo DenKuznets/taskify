@@ -14,7 +14,7 @@ type Props = {
 
 const SingleTodo = ({ todo, todos, setTodos }: Props) => {
   const [edit, setEdit] = useState<boolean>(false);
-  const [editTodo, setEditTodo] = useState<string>(todo.todo);
+  const [editTodo, setEditTodo] = useState<string>(todo.todoText);
   // нажатие на иконку "галочка". меняем isDone с тру на фалс
   const handleDone = (id: number) => {
     setTodos(
@@ -29,7 +29,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
     e.preventDefault();
     // у туду совпадающей по айди, текст делаем равным editTodo
     setTodos((todos) =>
-      todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
+      todos.map((todo) => (todo.id === id ? { ...todo, todoText: editTodo } : todo))
     );
     // выключаем режим редактирования
     setEdit(false);
@@ -50,9 +50,9 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
           className="todos__single--text"
         />
       ) : todo.isDone ? (
-        <s className="todos__single--text">{todo.todo}</s>
+        <s className="todos__single--text">{todo.todoText}</s>
       ) : (
-        <span className="todos__single--text">{todo.todo}</span>
+        <span className="todos__single--text">{todo.todoText}</span>
       )}
 
       <div>

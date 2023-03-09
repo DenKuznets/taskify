@@ -5,8 +5,8 @@ import { Todo } from "./components/model";
 import TodoList from "./components/TodoList";
 
 const App: React.FC = () => {
-  // todo это одна желтая записка
-  const [todo, setTodo] = useState<string>("");
+  // текст одного туду
+  const [todoText, setTodoText] = useState<string>("");
   // todos массив содержащий все текущие записки
   const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -15,11 +15,11 @@ const App: React.FC = () => {
     // предотвращаем отправку формы по умолчанию
     e.preventDefault();
     // если в inputе есть текст
-    if (todo) {
+    if (todoText) {
       // к остальным запискам добавляем новую с текстом из input, Id создаем рандомный из текущей даты в милисекундах
-      setTodos([...todos, { id: Date.now(), todo, isDone: false }]);
+      setTodos([...todos, { id: Date.now(), todoText: todoText, isDone: false }]);
       // очищаем поле input от текста
-      setTodo("");
+      setTodoText("");
     }
   };
 
@@ -27,7 +27,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <span className="heading">TASKIFY</span>
-      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+      <InputField todoText={todoText} setTodo={setTodoText} handleAdd={handleAdd} />
       <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
