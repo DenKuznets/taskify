@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
 import { Todo } from "./components/model";
+import TodoList from "./components/TodoList";
 
 const App: React.FC = () => {
   // todo это одна желтая записка
@@ -27,7 +28,7 @@ const App: React.FC = () => {
     <div className="App">
       <span className="heading">TASKIFY</span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
-      {/* <TodoList /> */}
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 };
