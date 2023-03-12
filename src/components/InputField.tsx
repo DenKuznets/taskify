@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./styles.css";
+import "./Styles.css";
 
 // указываем типы свойств которые мы получаем из App.tsx , что бы тайпскрипт не ругался
 interface Props {
